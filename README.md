@@ -2,3 +2,6 @@ This repository features our Intelligent System course assignment. We are requir
 
 Members:
 Muhammad Hakim bin Md Nazri
+Imran Hazim
+Tanjim
+Irfan Qayyim
