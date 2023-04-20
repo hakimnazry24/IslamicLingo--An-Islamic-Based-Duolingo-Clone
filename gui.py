@@ -6,7 +6,7 @@ class gui:
     def __init__(self) -> None:
         #main window
         self.root = Tk()
-        self.root.geometry("1400x800")
+        self.root.geometry("1200x600")
         self.root.resizable(0, 0)
         self.root.title("IslamicLingo")
         
@@ -17,7 +17,7 @@ class gui:
 
         #startframe
         self.startframe = Frame(self.root)
-        self.startframe.pack(pady=50)
+       # self.startframe.pack(pady=50)
 
         #logo and title
         self.startlogo = ImageTk.PhotoImage(Image.open("image/mosque.png").resize((198, 192)))
@@ -65,10 +65,72 @@ class gui:
         self.hadithmeaning.pack()
         self.hadithsource.pack(pady=40)
 
+    # -----------------------------------------------------------------------------------------------------
+    # Question 1 frame
+        self.qframe = Frame(self.root)
+        self.qframe.pack(padx=30, pady=30)
 
+        # Home button
+        self.homebutton = Button(self.qframe, text="Home", padx=20, pady=20).grid(row=0, column=0)
 
+        #spacer
+        self.spacer = Label(self.qframe,text="                                             ").grid(row=0, column=1)
+        
+        #logo
+        self.endlogo = ImageTk.PhotoImage(Image.open("image/mosque.png").resize((89, 87)))
+        self.endtitle = ImageTk.PhotoImage(Image.open("image/islamiclingo.png").resize((233, 43)))
 
+        self.qlogoframe = Frame(self.qframe)
+        self.qlogoframe.grid(row=0, column=2)
 
+        self.endlogolabel = Label(self.qlogoframe, image=self.endlogo)
+        self.endtitlelabel = Label(self.qlogoframe, image=self.endtitle)
+        self.endlogolabel.pack(side=LEFT)
+        self.endtitlelabel.pack(side=LEFT)
+
+        # question
+        self.middleqframe = Frame(self.qframe)
+        self.middleqframe.grid(row=1, column=1)
+
+        self.instruction = Label(self.middleqframe, text="Write this in English", font=("Arial", '15', 'bold')).pack()
+        self.question = Label(self.middleqframe, text="الأرز والماء", font=("", "70"), width=13).pack()
+
+        #choice
+        self.choiceframe = Frame(self.middleqframe)
+        self.choiceframe.pack(pady=70)
+
+        self.choice1 = Button(self.choiceframe, text="Rice", width=10).pack(side=LEFT, padx=8)
+        self.choice2 = Button(self.choiceframe, text="Juice", width=10).pack(side=LEFT, padx=8)
+        self.choice3 = Button(self.choiceframe, text="Door", width=10).pack(side=LEFT, padx=8)
+        self.choice4 = Button(self.choiceframe, text="Road", width=10).pack(side=LEFT, padx=8)
+        self.choice5 = Button(self.choiceframe, text="Eat", width=10).pack(side=LEFT, padx=8)
+        self.choice6 = Button(self.choiceframe, text="Drink", width=10).pack(side=LEFT, padx=8)
+        self.choice7 = Button(self.choiceframe, text="Walk", width=10).pack(side=LEFT, padx=8)
+
+        # navigation 
+        self.navframe = Frame(self.qframe, bg="green", padx=30, pady=70)
+        self.navframe.grid(row=1, column=2)
+
+        self.navlabel = Label(self.navframe, text="Questions", font=("Arial", "20"), pady=20, bg='green').pack()
+
+        self.navbuttonframe = Frame(self.navframe, bg="green")
+        self.navbuttonframe.pack()
+
+        self.q1nav = Button(self.navbuttonframe, text="1", padx=10, pady=10).pack(side=RIGHT, padx=10)
+        self.q2nav = Button(self.navbuttonframe, text="2", padx=10, pady=10).pack(side=RIGHT, padx=10)
+        self.q3nav = Button(self.navbuttonframe, text="3", padx=10, pady=10).pack(side=RIGHT, padx=10)
+        self.q4nav = Button(self.navbuttonframe, text="4", padx=10, pady=10).pack(side=RIGHT, padx=10)
+        self.q5nav = Button(self.navbuttonframe, text="5", padx=10, pady=10).pack(side=RIGHT, padx=10)
+
+        #finish button
+        self.finbutton = Button(self.navframe, text="FINISH", padx=20, pady=10).pack(pady=30)
+
+        #back and forward button
+        self.backforwardframe = Frame(self.navframe, bg='green')
+        self.backforwardframe.pack()
+
+        self.backbutton = Button(self.backforwardframe, text="BACK", padx=20, pady=10).pack(side=LEFT, padx=20)
+        self.forwardbutton = Button(self.backforwardframe, text="FORWARD", padx=20, pady=10).pack(padx=20)
 
 
         self.root.mainloop()
