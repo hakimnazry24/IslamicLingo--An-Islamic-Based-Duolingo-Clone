@@ -71,11 +71,13 @@ class gui:
 
         self.currentq = None
     
-        # Home button
+        # home button logic
         def returnhome():
             self.CURRENTFRAME = self.root.children['!frame3']
             self.CURRENTFRAME.pack_forget()
             self.startframe.pack(pady=50)
+
+        # home button
         self.homebutton = Button(self.qframe, text="Home", padx=20, pady=20, command=returnhome).grid(row=0, column=0)
 
         #spacer
