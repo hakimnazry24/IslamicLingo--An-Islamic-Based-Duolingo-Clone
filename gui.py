@@ -4,7 +4,7 @@ from time import sleep
 
 class gui:
     def __init__(self) -> None:
-        #main window
+        #MAIN WINDOW
         self.root = Tk()
         self.root.geometry("1200x600")
         self.root.resizable(0, 0)
@@ -16,7 +16,8 @@ class gui:
         photo = ImageTk.PhotoImage(ico)
         self.root.wm_iconphoto(False, photo) 
 
-        #startframe
+#------------------------------------------------------------------------------------------------------------------------
+        #START FRAME
         self.startframe = Frame(self.root)
         self.startframe.pack(pady=50)
 
@@ -42,7 +43,7 @@ class gui:
         self.startbutton = Button(self.startframe, text="GET STARTED", width=50, height=3, bg="#5ACC05", fg="#fff", font=("Helvetica", 15), command=start).pack()
 
         #--------------------------------------------------------------------------------------------------------------------------
-        # endframe
+        # END FRAME
         self.endframe = Frame(self.root)
 
         #logo and title
@@ -59,18 +60,13 @@ class gui:
         self.congrats.pack(pady=20)
 
         #hadith label
-        self.firstsubtext = Label(self.endframe, text="The Second Caliph Umar b.al-Khattab (R.A) always emphasized:", font=("Helvetica", 24))
-        self.hadith = Label(self.endframe, text="\"تَعَلّمُوا العربيّةَ فَإنّها مِن دِينِكُم\"", font=("Helvetica", 24))
-        self.hadithmeaning = Label(self.endframe, text="(Learn the Arabic language as it is part of your Din)." , font=("Helvetica", 24, "bold"))
-        self.hadithsource = Label(self.endframe, text="Al-Bayhaqi: Shu‘ub al-Iman, Vol. 2, p. 257.", font=("Helvetica", 24))
-
-        self.firstsubtext.pack(pady=40)
-        self.hadith.pack()
-        self.hadithmeaning.pack()
-        self.hadithsource.pack(pady=40)
+        self.firstsubtext = Label(self.endframe, text="The Second Caliph Umar b.al-Khattab (R.A) always emphasized:", font=("Helvetica", 24)).pack(pady=40)
+        self.hadith = Label(self.endframe, text="\"تَعَلّمُوا العربيّةَ فَإنّها مِن دِينِكُم\"", font=("Helvetica", 24)).pack()
+        self.hadithmeaning = Label(self.endframe, text="(Learn the Arabic language as it is part of your Din)." , font=("Helvetica", 24, "bold")).pack()
+        self.hadithsource = Label(self.endframe, text="Al-Bayhaqi: Shu‘ub al-Iman, Vol. 2, p. 257.", font=("Helvetica", 24)).pack(pady=40)
 
     # -----------------------------------------------------------------------------------------------------
-    # Question frame
+    # QUESTION FRAME
         self.qframe = Frame(self.root)
 
         self.currentq = None
@@ -106,8 +102,7 @@ class gui:
         self.navbuttonframe = Frame(self.navframe, bg="green")
         self.navbuttonframe.pack()
         
-        
-        print(self.CURRENTFRAME)
+        # navigation logic
         def displayq1():
             self.middleq2frame.grid_forget()
             self.middleq3frame.grid_forget()
@@ -143,14 +138,15 @@ class gui:
             self.middleq4frame.grid_forget()
             self.currentq = 5
             self.middleq5frame.grid(row=1, column=1)
-
+        
+        # navigation button
         self.q1nav = Button(self.navbuttonframe, text="1", padx=10, pady=10, command=displayq1).pack(side=RIGHT, padx=10)
         self.q2nav = Button(self.navbuttonframe, text="2", padx=10, pady=10, command=displayq2).pack(side=RIGHT, padx=10)
         self.q3nav = Button(self.navbuttonframe, text="3", padx=10, pady=10, command=displayq3).pack(side=RIGHT, padx=10)
         self.q4nav = Button(self.navbuttonframe, text="4", padx=10, pady=10, command=displayq4).pack(side=RIGHT, padx=10)
         self.q5nav = Button(self.navbuttonframe, text="5", padx=10, pady=10, command=displayq5).pack(side=RIGHT, padx=10)
 
-        #submit button
+        #choice button logic
         def choice(num):
             if self.currentq == 1:
                 self.q1choicearr.append(num)
@@ -164,7 +160,7 @@ class gui:
             elif self.currentq == 5:
                 self.q5choicearr.append(num)
                 
-
+        #submit button logic
         def submitq(currentq):
             if currentq == 1:
                 if self.q1choicearr == [1, 4, 6]:
@@ -207,33 +203,30 @@ class gui:
                     self.wronglabel = Label(self.middleq5frame, text="YOU ARE WRONG!\n TRY AGAIN", fg="red", font=("Arial", 20, "bold")).pack()
                     print(False)
 
+        # submit button
         self.submitqbutton = Button(self.navframe, text="SUBMIT QUESTION", padx=26, pady=10, command=lambda: submitq(self.currentq)).pack(pady=30)
 
-        #correct answer label
-        # self.correctlabel = Label(self.navframe, text="YOU ARE CORRECT!!!", font=("Arial", 20, "bold")).pack()
-
-        #wrong answer label
-        # self.wronglabel = Label(self.navframe, text="YOU ARE WRONG!\n TRY AGAIN", fg="red", font=("Arial", 20, "bold")).pack()
-
-
-        #finish button
+        #finish button logic
         def finish():
             self.CURRENTFRAME = self.root.children['!frame3']
             self.CURRENTFRAME.pack_forget()
             self.CURRENTFRAME = self.endframe
             self.CURRENTFRAME.pack(padx=50)
+
+        # finish button
         self.finbutton = Button(self.navframe, text="FINISH QUIZ", padx=20, pady=10, command=finish).pack(pady=30)
 
         #-----------------------------------------------------------------------------------------------------
-        # question 1
+        # QUESTION 1 FRAME
         self.middleq1frame = Frame(self.qframe)
         self.middleq1frame.grid(row=1, column=1)
         self.CURRENTFRAME = self.middleq1frame
         
+        # instruction and label
         self.instruction = Label(self.middleq1frame, text="Write this in English", font=("Arial", '15', 'bold')).pack()
         self.question = Label(self.middleq1frame, text="الأرز والماء", font=("", "70"), width=13).pack()
 
-        #choice
+        #choice button
         self.q1choiceframe = Frame(self.middleq1frame)
         self.q1choiceframe.pack(pady=70)
 
@@ -248,13 +241,14 @@ class gui:
         self.q1choice7 = Button(self.q1choiceframe, text="Walk", width=10, command=lambda: choice(7)).pack(side=LEFT, padx=8)
 
     #---------------------------------------------------------------------------------------------------------
-    # question 2 
+        # QUESTION 2
         self.middleq2frame = Frame(self.qframe)
         
+        #instruction and question
         self.instruction = Label(self.middleq2frame, text="Write this in English", font=("Arial", '15', 'bold')).pack()
         self.question = Label(self.middleq2frame, text="القط والكلب", font=("", "70"), width=13).pack()
 
-        #choice
+        # choice button
         self.q2choiceframe = Frame(self.middleq2frame)
         self.q2choiceframe.pack(pady=70)
 
@@ -269,13 +263,14 @@ class gui:
         self.q2choice7 = Button(self.q2choiceframe, text="Dog", width=10, command=lambda: choice(7)).pack(side=LEFT, padx=8)
 
         #---------------------------------------------------------------------------------------------------------
-    # question 3
+        # QUESTION 3
         self.middleq3frame = Frame(self.qframe)
         
+        # instruction and label
         self.instruction = Label(self.middleq3frame, text="Write this in English", font=("Arial", '15', 'bold')).pack()
         self.question = Label(self.middleq3frame, text="الشمس والقمر", font=("", "70"), width=13).pack()
 
-        #choice
+        # choice button
         self.q3choiceframe = Frame(self.middleq3frame)
         self.q3choiceframe.pack(pady=70)
 
@@ -290,13 +285,14 @@ class gui:
         self.q3choice7 = Button(self.q3choiceframe, text="Sunny", width=10, command=lambda: choice(7)).pack(side=LEFT, padx=8)
 
         #---------------------------------------------------------------------------------------------------------
-    # question 4
+        # QUESTION 4
         self.middleq4frame = Frame(self.qframe)
         
+        # instruction and question
         self.instruction = Label(self.middleq4frame, text="Write this in English", font=("Arial", '15', 'bold')).pack()
         self.question = Label(self.middleq4frame, text="رجل وامرأة", font=("", "70"), width=13).pack()
 
-        #choice
+        # choice button
         self.q4choiceframe = Frame(self.middleq4frame)
         self.q4choiceframe.pack(pady=70)
 
@@ -311,13 +307,14 @@ class gui:
         self.q4choice7 = Button(self.q4choiceframe, text="is", width=10, command=lambda: choice(7)).pack(side=LEFT, padx=8)
 
         #---------------------------------------------------------------------------------------------------------
-    # question 5 
+        # QUESTION 5 
         self.middleq5frame = Frame(self.qframe)
         
+        # instruction and question
         self.instruction = Label(self.middleq5frame, text="Write this in English", font=("Arial", '15', 'bold')).pack()
         self.question = Label(self.middleq5frame, text="انا نائم", font=("", "70"), width=13).pack()
 
-        #choice
+        # choice button
         self.q5choiceframe = Frame(self.middleq5frame)
         self.q5choiceframe.pack(pady=70)
 
@@ -331,7 +328,9 @@ class gui:
         self.q5choice6 = Button(self.q5choiceframe, text="Walking", width=10, command=lambda: choice(6)).pack(side=LEFT, padx=8)
         self.q5choice7 = Button(self.q5choiceframe, text="Eating", width=10, command=lambda: choice(7)).pack(side=LEFT, padx=8)
 
+        # mainloop
         self.root.mainloop()
 
+# instantiating gui class
 gui()
 
