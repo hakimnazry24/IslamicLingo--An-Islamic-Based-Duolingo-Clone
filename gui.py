@@ -241,7 +241,7 @@ class gui:
         self.q1choice7 = Button(self.q1choiceframe, text="Walk", width=10, command=lambda: choice(7)).pack(side=LEFT, padx=8)
 
     #---------------------------------------------------------------------------------------------------------
-        # QUESTION 2
+        # QUESTION 2 FRAME
         self.middleq2frame = Frame(self.qframe)
         
         #instruction and question
@@ -263,7 +263,7 @@ class gui:
         self.q2choice7 = Button(self.q2choiceframe, text="Dog", width=10, command=lambda: choice(7)).pack(side=LEFT, padx=8)
 
         #---------------------------------------------------------------------------------------------------------
-        # QUESTION 3
+        # QUESTION 3 FRAME
         self.middleq3frame = Frame(self.qframe)
         
         # instruction and label
@@ -285,7 +285,7 @@ class gui:
         self.q3choice7 = Button(self.q3choiceframe, text="Sunny", width=10, command=lambda: choice(7)).pack(side=LEFT, padx=8)
 
         #---------------------------------------------------------------------------------------------------------
-        # QUESTION 4
+        # QUESTION 4 FRAME
         self.middleq4frame = Frame(self.qframe)
         
         # instruction and question
@@ -307,7 +307,7 @@ class gui:
         self.q4choice7 = Button(self.q4choiceframe, text="is", width=10, command=lambda: choice(7)).pack(side=LEFT, padx=8)
 
         #---------------------------------------------------------------------------------------------------------
-        # QUESTION 5 
+        # QUESTION 5 FRAME
         self.middleq5frame = Frame(self.qframe)
         
         # instruction and question
