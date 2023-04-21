@@ -1,6 +1,5 @@
 from tkinter import *
 from PIL import ImageTk, Image
-from time import sleep
 
 class gui:
     def __init__(self) -> None:
