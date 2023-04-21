@@ -1,6 +1,6 @@
 from tkinter import *
 from PIL import ImageTk, Image
-
+from time import sleep
 
 class gui:
     def __init__(self) -> None:
@@ -74,8 +74,7 @@ class gui:
         self.qframe = Frame(self.root)
 
         self.currentq = None
-        
-
+    
         # Home button
         def returnhome():
             self.CURRENTFRAME = self.root.children['!frame3']
@@ -145,7 +144,6 @@ class gui:
             self.currentq = 5
             self.middleq5frame.grid(row=1, column=1)
 
-
         self.q1nav = Button(self.navbuttonframe, text="1", padx=10, pady=10, command=displayq1).pack(side=RIGHT, padx=10)
         self.q2nav = Button(self.navbuttonframe, text="2", padx=10, pady=10, command=displayq2).pack(side=RIGHT, padx=10)
         self.q3nav = Button(self.navbuttonframe, text="3", padx=10, pady=10, command=displayq3).pack(side=RIGHT, padx=10)
@@ -170,30 +168,53 @@ class gui:
         def submitq(currentq):
             if currentq == 1:
                 if self.q1choicearr == [1, 4, 6]:
+                    self.correctlabel = Label(self.middleq1frame, text="YOU ARE CORRECT!!!", font=("Arial", 20, "bold")).pack()
                     print(True)
                 else:
+                    self.q1choicearr = []
+                    self.wronglabel = Label(self.middleq1frame, text="YOU ARE WRONG!\n TRY AGAIN", fg="red", font=("Arial", 20, "bold")).pack()
                     print(False)
             elif currentq == 2:
                 if self.q2choicearr == [4, 6, 7]:
+                    self.correctlabel = Label(self.middleq2frame, text="YOU ARE CORRECT!!!", font=("Arial", 20, "bold")).pack()
                     print(True)
                 else:
+                    self.q2choicearr = []
+                    self.wronglabel = Label(self.middleq2frame, text="YOU ARE WRONG!\n TRY AGAIN", fg="red", font=("Arial", 20, "bold")).pack()
                     print(False)
             elif currentq == 3:
                 if self.q3choicearr == [1, 5, 6]:
+                    self.correctlabel = Label(self.middleq3frame, text="YOU ARE CORRECT!!!", font=("Arial", 20, "bold")).pack()
                     print(True)
                 else:
+                    self.q3choicearr = []
+                    self.wronglabel = Label(self.middleq3frame, text="YOU ARE WRONG!\n TRY AGAIN", fg="red", font=("Arial", 20, "bold")).pack()
                     print(False)
             elif currentq == 4:
                 if self.q4choicearr == [6, 4, 3]:
+                    self.correctlabel = Label(self.middleq4frame, text="YOU ARE CORRECT!!!", font=("Arial", 20, "bold")).pack()
                     print(True)
                 else:
+                    self.q4choicearr = []
+                    self.wronglabel = Label(self.middleq4frame, text="YOU ARE WRONG!\n TRY AGAIN", fg="red", font=("Arial", 20, "bold")).pack()
                     print(False)
             elif currentq == 5:
                 if self.q5choicearr == [5, 1, 4]:
+                    self.correctlabel = Label(self.middleq5frame, text="YOU ARE CORRECT!!!", font=("Arial", 20, "bold")).pack()
                     print(True)
                 else:
+                    self.q5choicearr = []
+                    self.wronglabel = Label(self.middleq5frame, text="YOU ARE WRONG!\n TRY AGAIN", fg="red", font=("Arial", 20, "bold")).pack()
                     print(False)
+
         self.submitqbutton = Button(self.navframe, text="SUBMIT QUESTION", padx=26, pady=10, command=lambda: submitq(self.currentq)).pack(pady=30)
+
+        #correct answer label
+        # self.correctlabel = Label(self.navframe, text="YOU ARE CORRECT!!!", font=("Arial", 20, "bold")).pack()
+
+        #wrong answer label
+        # self.wronglabel = Label(self.navframe, text="YOU ARE WRONG!\n TRY AGAIN", fg="red", font=("Arial", 20, "bold")).pack()
+
 
         #finish button
         def finish():
@@ -225,8 +246,6 @@ class gui:
         self.q1choice5 = Button(self.q1choiceframe, text="Eat", width=10, command=lambda: choice(5)).pack(side=LEFT, padx=8)
         self.q1choice6 = Button(self.q1choiceframe, text="Water", width=10, command=lambda: choice(6)).pack(side=LEFT, padx=8)
         self.q1choice7 = Button(self.q1choiceframe, text="Walk", width=10, command=lambda: choice(7)).pack(side=LEFT, padx=8)
-
-
 
     #---------------------------------------------------------------------------------------------------------
     # question 2 
@@ -311,14 +330,6 @@ class gui:
         self.q5choice5 = Button(self.q5choiceframe, text="I", width=10, command=lambda: choice(5)).pack(side=LEFT, padx=8)
         self.q5choice6 = Button(self.q5choiceframe, text="Walking", width=10, command=lambda: choice(6)).pack(side=LEFT, padx=8)
         self.q5choice7 = Button(self.q5choiceframe, text="Eating", width=10, command=lambda: choice(7)).pack(side=LEFT, padx=8)
-
-        
-
-
-
-
-
-
 
         self.root.mainloop()
 
