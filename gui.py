@@ -9,6 +9,7 @@ class gui:
         self.root.geometry("1200x600")
         self.root.resizable(0, 0)
         self.root.title("IslamicLingo")
+        self.CURRENTFRAME = None
         
         #favicon
         ico = Image.open('image/mosque.png')
@@ -17,7 +18,7 @@ class gui:
 
         #startframe
         self.startframe = Frame(self.root)
-       # self.startframe.pack(pady=50)
+        self.startframe.pack(pady=50)
 
         #logo and title
         self.startlogo = ImageTk.PhotoImage(Image.open("image/mosque.png").resize((198, 192)))
@@ -33,13 +34,18 @@ class gui:
         self.titlesubtext.pack(pady=20)
 
         #start button
-        self.startbutton = Button(self.startframe, text="GET STARTED", width=50, height=3, bg="#5ACC05", fg="#fff", font=("Helvetica", 15))
-        self.startbutton.pack()
+        def start():
+            self.CURRENTFRAME = self.root.children['!frame']
+            self.CURRENTFRAME.pack_forget()
+            self.CURRENTFRAME = self.qframe
+            self.CURRENTFRAME.pack(padx=30, pady=30)
+            #print(self.CURRENTFRAME)
+        self.startbutton = Button(self.startframe, text="GET STARTED", width=50, height=3, bg="#5ACC05", fg="#fff", font=("Helvetica", 15), command=start).pack()
 
         #--------------------------------------------------------------------------------------------------------------------------
         # endframe
         self.endframe = Frame(self.root)
-        #self.endframe.pack(padx=50)
+        # self.endframe.pack(padx=50)
 
         #logo and title
         self.endlogo = ImageTk.PhotoImage(Image.open("image/mosque.png").resize((89, 87)))
@@ -66,12 +72,16 @@ class gui:
         self.hadithsource.pack(pady=40)
 
     # -----------------------------------------------------------------------------------------------------
-    # Question 1 frame
+    # Question frame
         self.qframe = Frame(self.root)
-        self.qframe.pack(padx=30, pady=30)
+        
 
         # Home button
-        self.homebutton = Button(self.qframe, text="Home", padx=20, pady=20).grid(row=0, column=0)
+        def returnhome():
+            self.CURRENTFRAME = self.root.children['!frame3']
+            self.CURRENTFRAME.pack_forget()
+            self.startframe.pack(pady=50)
+        self.homebutton = Button(self.qframe, text="Home", padx=20, pady=20, command=returnhome).grid(row=0, column=0)
 
         #spacer
         self.spacer = Label(self.qframe,text="                                             ").grid(row=0, column=1)
@@ -88,25 +98,6 @@ class gui:
         self.endlogolabel.pack(side=LEFT)
         self.endtitlelabel.pack(side=LEFT)
 
-        # question
-        self.middleqframe = Frame(self.qframe)
-        self.middleqframe.grid(row=1, column=1)
-
-        self.instruction = Label(self.middleqframe, text="Write this in English", font=("Arial", '15', 'bold')).pack()
-        self.question = Label(self.middleqframe, text="الأرز والماء", font=("", "70"), width=13).pack()
-
-        #choice
-        self.choiceframe = Frame(self.middleqframe)
-        self.choiceframe.pack(pady=70)
-
-        self.choice1 = Button(self.choiceframe, text="Rice", width=10).pack(side=LEFT, padx=8)
-        self.choice2 = Button(self.choiceframe, text="Juice", width=10).pack(side=LEFT, padx=8)
-        self.choice3 = Button(self.choiceframe, text="Door", width=10).pack(side=LEFT, padx=8)
-        self.choice4 = Button(self.choiceframe, text="Road", width=10).pack(side=LEFT, padx=8)
-        self.choice5 = Button(self.choiceframe, text="Eat", width=10).pack(side=LEFT, padx=8)
-        self.choice6 = Button(self.choiceframe, text="Drink", width=10).pack(side=LEFT, padx=8)
-        self.choice7 = Button(self.choiceframe, text="Walk", width=10).pack(side=LEFT, padx=8)
-
         # navigation 
         self.navframe = Frame(self.qframe, bg="green", padx=30, pady=70)
         self.navframe.grid(row=1, column=2)
@@ -115,22 +106,163 @@ class gui:
 
         self.navbuttonframe = Frame(self.navframe, bg="green")
         self.navbuttonframe.pack()
+        
+        
+        print(self.CURRENTFRAME)
+        def displayq1():
+            self.middleq2frame.grid_forget()
+            self.middleq3frame.grid_forget()
+            self.middleq4frame.grid_forget()
+            self.middleq5frame.grid_forget()
+            self.middleq1frame.grid(row=1, column=1)
+        def displayq2():
+            self.middleq1frame.grid_forget()
+            self.middleq3frame.grid_forget()
+            self.middleq4frame.grid_forget()
+            self.middleq5frame.grid_forget()
+            self.middleq2frame.grid(row=1, column=1)
+        def displayq3():
+            self.middleq1frame.grid_forget()
+            self.middleq2frame.grid_forget()
+            self.middleq4frame.grid_forget()
+            self.middleq5frame.grid_forget()
+            self.middleq3frame.grid(row=1, column=1)
+        def displayq4():
+            self.middleq1frame.grid_forget()
+            self.middleq2frame.grid_forget()
+            self.middleq3frame.grid_forget()
+            self.middleq5frame.grid_forget()
+            self.middleq4frame.grid(row=1, column=1)
+        def displayq5():
+            self.middleq1frame.grid_forget()
+            self.middleq2frame.grid_forget()
+            self.middleq3frame.grid_forget()
+            self.middleq4frame.grid_forget()
+            self.middleq5frame.grid(row=1, column=1)
 
-        self.q1nav = Button(self.navbuttonframe, text="1", padx=10, pady=10).pack(side=RIGHT, padx=10)
-        self.q2nav = Button(self.navbuttonframe, text="2", padx=10, pady=10).pack(side=RIGHT, padx=10)
-        self.q3nav = Button(self.navbuttonframe, text="3", padx=10, pady=10).pack(side=RIGHT, padx=10)
-        self.q4nav = Button(self.navbuttonframe, text="4", padx=10, pady=10).pack(side=RIGHT, padx=10)
-        self.q5nav = Button(self.navbuttonframe, text="5", padx=10, pady=10).pack(side=RIGHT, padx=10)
+
+        self.q1nav = Button(self.navbuttonframe, text="1", padx=10, pady=10, command=displayq1).pack(side=RIGHT, padx=10)
+        self.q2nav = Button(self.navbuttonframe, text="2", padx=10, pady=10, command=displayq2).pack(side=RIGHT, padx=10)
+        self.q3nav = Button(self.navbuttonframe, text="3", padx=10, pady=10, command=displayq3).pack(side=RIGHT, padx=10)
+        self.q4nav = Button(self.navbuttonframe, text="4", padx=10, pady=10, command=displayq4).pack(side=RIGHT, padx=10)
+        self.q5nav = Button(self.navbuttonframe, text="5", padx=10, pady=10, command=displayq5).pack(side=RIGHT, padx=10)
+
 
         #finish button
-        self.finbutton = Button(self.navframe, text="FINISH", padx=20, pady=10).pack(pady=30)
+        def finish():
+            self.CURRENTFRAME = self.root.children['!frame3']
+            self.CURRENTFRAME.pack_forget()
+            self.CURRENTFRAME = self.endframe
+            self.CURRENTFRAME.pack(padx=50)
+        self.finbutton = Button(self.navframe, text="FINISH", padx=20, pady=10, command=finish).pack(pady=30)
 
-        #back and forward button
-        self.backforwardframe = Frame(self.navframe, bg='green')
-        self.backforwardframe.pack()
+        #-----------------------------------------------------------------------------------------------------
+        # question 1
+        self.middleq1frame = Frame(self.qframe)
+        self.middleq1frame.grid(row=1, column=1)
+        self.CURRENTFRAME = self.middleq1frame
+        
+        self.instruction = Label(self.middleq1frame, text="Write this in English", font=("Arial", '15', 'bold')).pack()
+        self.question = Label(self.middleq1frame, text="الأرز والماء", font=("", "70"), width=13).pack()
 
-        self.backbutton = Button(self.backforwardframe, text="BACK", padx=20, pady=10).pack(side=LEFT, padx=20)
-        self.forwardbutton = Button(self.backforwardframe, text="FORWARD", padx=20, pady=10).pack(padx=20)
+        #choice
+        self.q1choiceframe = Frame(self.middleq1frame)
+        self.q1choiceframe.pack(pady=70)
+
+        self.choice1 = Button(self.q1choiceframe, text="Rice", width=10).pack(side=LEFT, padx=8)
+        self.choice2 = Button(self.q1choiceframe, text="Juice", width=10).pack(side=LEFT, padx=8)
+        self.choice3 = Button(self.q1choiceframe, text="Door", width=10).pack(side=LEFT, padx=8)
+        self.choice4 = Button(self.q1choiceframe, text="and", width=10).pack(side=LEFT, padx=8)
+        self.choice5 = Button(self.q1choiceframe, text="Eat", width=10).pack(side=LEFT, padx=8)
+        self.choice6 = Button(self.q1choiceframe, text="Water", width=10).pack(side=LEFT, padx=8)
+        self.choice7 = Button(self.q1choiceframe, text="Walk", width=10).pack(side=LEFT, padx=8)
+
+    #---------------------------------------------------------------------------------------------------------
+    # question 2 
+        self.middleq2frame = Frame(self.qframe)
+        #self.middleq3frame.grid(row=1, column=1)
+        
+        self.instruction = Label(self.middleq2frame, text="Write this in English", font=("Arial", '15', 'bold')).pack()
+        self.question = Label(self.middleq2frame, text="القط والكلب", font=("", "70"), width=13).pack()
+
+        #choice
+        self.q2choiceframe = Frame(self.middleq2frame)
+        self.q2choiceframe.pack(pady=70)
+
+        self.choice1 = Button(self.q2choiceframe, text="Lizard", width=10).pack(side=LEFT, padx=8)
+        self.choice2 = Button(self.q2choiceframe, text="is", width=10).pack(side=LEFT, padx=8)
+        self.choice3 = Button(self.q2choiceframe, text="Food", width=10).pack(side=LEFT, padx=8)
+        self.choice4 = Button(self.q2choiceframe, text="Cat", width=10).pack(side=LEFT, padx=8)
+        self.choice5 = Button(self.q2choiceframe, text="People", width=10).pack(side=LEFT, padx=8)
+        self.choice6 = Button(self.q2choiceframe, text="and", width=10).pack(side=LEFT, padx=8)
+        self.choice7 = Button(self.q2choiceframe, text="Dog", width=10).pack(side=LEFT, padx=8)
+
+        #---------------------------------------------------------------------------------------------------------
+    # question 3
+        self.middleq3frame = Frame(self.qframe)
+        #self.middleq3frame.grid(row=1, column=1)
+        
+        self.instruction = Label(self.middleq3frame, text="Write this in English", font=("Arial", '15', 'bold')).pack()
+        self.question = Label(self.middleq3frame, text="الشمس والقمر", font=("", "70"), width=13).pack()
+
+        #choice
+        self.q3choiceframe = Frame(self.middleq3frame)
+        self.q3choiceframe.pack(pady=70)
+
+        self.choice1 = Button(self.q3choiceframe, text="Sun", width=10).pack(side=LEFT, padx=8)
+        self.choice2 = Button(self.q3choiceframe, text="The", width=10).pack(side=LEFT, padx=8)
+        self.choice3 = Button(self.q3choiceframe, text="Eating", width=10).pack(side=LEFT, padx=8)
+        self.choice4 = Button(self.q3choiceframe, text="Beautiful", width=10).pack(side=LEFT, padx=8)
+        self.choice5 = Button(self.q3choiceframe, text="and", width=10).pack(side=LEFT, padx=8)
+        self.choice6 = Button(self.q3choiceframe, text="Moon", width=10).pack(side=LEFT, padx=8)
+        self.choice7 = Button(self.q3choiceframe, text="Sunny", width=10).pack(side=LEFT, padx=8)
+
+        #---------------------------------------------------------------------------------------------------------
+    # question 4
+        self.middleq4frame = Frame(self.qframe)
+        #self.middleq4frame.grid(row=1, column=1)
+        
+        self.instruction = Label(self.middleq4frame, text="Write this in English", font=("Arial", '15', 'bold')).pack()
+        self.question = Label(self.middleq4frame, text="رجل وامرأة", font=("", "70"), width=13).pack()
+
+        #choice
+        self.q4choiceframe = Frame(self.middleq4frame)
+        self.q4choiceframe.pack(pady=70)
+
+        self.choice1 = Button(self.q4choiceframe, text="Kid", width=10).pack(side=LEFT, padx=8)
+        self.choice2 = Button(self.q4choiceframe, text="playing", width=10).pack(side=LEFT, padx=8)
+        self.choice3 = Button(self.q4choiceframe, text="Woman", width=10).pack(side=LEFT, padx=8)
+        self.choice4 = Button(self.q4choiceframe, text="and", width=10).pack(side=LEFT, padx=8)
+        self.choice5 = Button(self.q4choiceframe, text="Elderly", width=10).pack(side=LEFT, padx=8)
+        self.choice6 = Button(self.q4choiceframe, text="Man", width=10).pack(side=LEFT, padx=8)
+        self.choice7 = Button(self.q4choiceframe, text="is", width=10).pack(side=LEFT, padx=8)
+
+        #---------------------------------------------------------------------------------------------------------
+    # question 5 
+        self.middleq5frame = Frame(self.qframe)
+        #self.middleq5frame.grid(row=1, column=1)
+        
+        self.instruction = Label(self.middleq5frame, text="Write this in English", font=("Arial", '15', 'bold')).pack()
+        self.question = Label(self.middleq5frame, text="انا نائم", font=("", "70"), width=13).pack()
+
+        #choice
+        self.q5choiceframe = Frame(self.middleq5frame)
+        self.q5choiceframe.pack(pady=70)
+
+        self.choice1 = Button(self.q5choiceframe, text="am", width=10).pack(side=LEFT, padx=8)
+        self.choice2 = Button(self.q5choiceframe, text="Awake", width=10).pack(side=LEFT, padx=8)
+        self.choice3 = Button(self.q5choiceframe, text="Hungry", width=10).pack(side=LEFT, padx=8)
+        self.choice4 = Button(self.q5choiceframe, text="Sleepy", width=10).pack(side=LEFT, padx=8)
+        self.choice5 = Button(self.q5choiceframe, text="I", width=10).pack(side=LEFT, padx=8)
+        self.choice6 = Button(self.q5choiceframe, text="Walking", width=10).pack(side=LEFT, padx=8)
+        self.choice7 = Button(self.q5choiceframe, text="Eating", width=10).pack(side=LEFT, padx=8)
+
+        
+
+
+
+
+
 
 
         self.root.mainloop()
