@@ -19,7 +19,7 @@ class gui:
         self.root.title("IslamicLingo")
 
         # current frame occupying root
-        self.CURRENTFRAME = None
+        self.currentframe = None
         
         #favicon
         ico = Image.open('image/mosque.png')
@@ -46,10 +46,10 @@ class gui:
 
         #start button
         def start():
-            self.CURRENTFRAME = self.root.children['!frame']
-            self.CURRENTFRAME.pack_forget()
-            self.CURRENTFRAME = self.qframe
-            self.CURRENTFRAME.pack(padx=30, pady=30)
+            self.currentframe = self.root.children['!frame']
+            self.currentframe.pack_forget()
+            self.currentframe = self.qframe
+            self.currentframe.pack(padx=30, pady=30)
         self.startbutton = Button(self.startframe, text="GET STARTED", width=50, height=3, bg="#5ACC05", fg="#fff", font=("Helvetica", 15), command=start).pack()
 
 #--------------------------------------------------------------------------------------------------------------------------
@@ -84,8 +84,8 @@ class gui:
     
         # home button logic
         def returnhome():
-            self.CURRENTFRAME = self.root.children['!frame3']
-            self.CURRENTFRAME.pack_forget()
+            self.currentframe = self.root.children['!frame3']
+            self.currentframe.pack_forget()
             self.startframe.pack(pady=50)
 
         # home button
@@ -221,10 +221,10 @@ class gui:
 
         #finish button logic
         def finish():
-            self.CURRENTFRAME = self.root.children['!frame3']
-            self.CURRENTFRAME.pack_forget()
-            self.CURRENTFRAME = self.endframe
-            self.CURRENTFRAME.pack(padx=50)
+            self.currentframe = self.root.children['!frame3']
+            self.currentframe.pack_forget()
+            self.currentframe = self.endframe
+            self.currentframe.pack(padx=50)
 
         # finish button
         self.finbutton = Button(self.navframe, text="FINISH QUIZ", padx=20, pady=10, command=finish).pack(pady=30)
@@ -233,7 +233,7 @@ class gui:
         # QUESTION 1 FRAME
         self.middleq1frame = Frame(self.qframe)
         self.middleq1frame.grid(row=1, column=1)
-        self.CURRENTFRAME = self.middleq1frame
+        self.currentframe = self.middleq1frame
         
         # instruction and label
         self.instruction = Label(self.middleq1frame, text="Write this in English", font=("Arial", '15', 'bold')).pack()
