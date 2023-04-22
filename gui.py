@@ -1,3 +1,12 @@
+'''
+ASSIGNMENT 1
+GROUP NAME: ENIGMA CODE
+TEAM MEMBERS: 
+1) MUHAMMAD HAKIM BIN MD NAZRI (2110457)
+2) TANJIM MOBASSHIRA SADIA (1824612)
+3) IRFAN QAYYIM BIN ABDUL MOHAIMIN (2116843)
+4) IMRAN HAZIM BIN ABDULLAH SALIM (2116445)
+'''
 from tkinter import *
 from PIL import ImageTk, Image
 
@@ -8,6 +17,8 @@ class gui:
         self.root.geometry("1200x600")
         self.root.resizable(0, 0)
         self.root.title("IslamicLingo")
+
+        # current frame occupying root
         self.CURRENTFRAME = None
         
         #favicon
@@ -41,7 +52,7 @@ class gui:
             self.CURRENTFRAME.pack(padx=30, pady=30)
         self.startbutton = Button(self.startframe, text="GET STARTED", width=50, height=3, bg="#5ACC05", fg="#fff", font=("Helvetica", 15), command=start).pack()
 
-        #--------------------------------------------------------------------------------------------------------------------------
+#--------------------------------------------------------------------------------------------------------------------------
         # END FRAME
         self.endframe = Frame(self.root)
 
@@ -64,11 +75,12 @@ class gui:
         self.hadithmeaning = Label(self.endframe, text="(Learn the Arabic language as it is part of your Din)." , font=("Helvetica", 24, "bold")).pack()
         self.hadithsource = Label(self.endframe, text="Al-Bayhaqi: Shu‘ub al-Iman, Vol. 2, p. 257.", font=("Helvetica", 24)).pack(pady=40)
 
-    # -----------------------------------------------------------------------------------------------------
+# -----------------------------------------------------------------------------------------------------
     # QUESTION FRAME
         self.qframe = Frame(self.root)
 
-        self.currentq = None
+        # current question (1)
+        self.currentq = 1
     
         # home button logic
         def returnhome():
@@ -217,7 +229,7 @@ class gui:
         # finish button
         self.finbutton = Button(self.navframe, text="FINISH QUIZ", padx=20, pady=10, command=finish).pack(pady=30)
 
-        #-----------------------------------------------------------------------------------------------------
+#-----------------------------------------------------------------------------------------------------
         # QUESTION 1 FRAME
         self.middleq1frame = Frame(self.qframe)
         self.middleq1frame.grid(row=1, column=1)
@@ -241,7 +253,7 @@ class gui:
         self.q1choice6 = Button(self.q1choiceframe, text="Water", width=10, command=lambda: choice(6)).pack(side=LEFT, padx=8)
         self.q1choice7 = Button(self.q1choiceframe, text="Walk", width=10, command=lambda: choice(7)).pack(side=LEFT, padx=8)
 
-    #---------------------------------------------------------------------------------------------------------
+#---------------------------------------------------------------------------------------------------------
         # QUESTION 2 FRAME
         self.middleq2frame = Frame(self.qframe)
         
@@ -263,7 +275,7 @@ class gui:
         self.q2choice6 = Button(self.q2choiceframe, text="and", width=10, command=lambda: choice(6)).pack(side=LEFT, padx=8)
         self.q2choice7 = Button(self.q2choiceframe, text="Dog", width=10, command=lambda: choice(7)).pack(side=LEFT, padx=8)
 
-        #---------------------------------------------------------------------------------------------------------
+#---------------------------------------------------------------------------------------------------------
         # QUESTION 3 FRAME
         self.middleq3frame = Frame(self.qframe)
         
@@ -285,7 +297,7 @@ class gui:
         self.q3choice6 = Button(self.q3choiceframe, text="Moon", width=10, command=lambda: choice(6)).pack(side=LEFT, padx=8)
         self.q3choice7 = Button(self.q3choiceframe, text="Sunny", width=10, command=lambda: choice(7)).pack(side=LEFT, padx=8)
 
-        #---------------------------------------------------------------------------------------------------------
+#---------------------------------------------------------------------------------------------------------
         # QUESTION 4 FRAME
         self.middleq4frame = Frame(self.qframe)
         
@@ -307,7 +319,7 @@ class gui:
         self.q4choice6 = Button(self.q4choiceframe, text="Man", width=10, command=lambda: choice(6)).pack(side=LEFT, padx=8)
         self.q4choice7 = Button(self.q4choiceframe, text="is", width=10, command=lambda: choice(7)).pack(side=LEFT, padx=8)
 
-        #---------------------------------------------------------------------------------------------------------
+#---------------------------------------------------------------------------------------------------------
         # QUESTION 5 FRAME
         self.middleq5frame = Frame(self.qframe)
         
