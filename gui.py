@@ -12,7 +12,7 @@ from PIL import ImageTk, Image
 
 class gui:
     def __init__(self) -> None:
-        #MAIN WINDOW
+        #MAIN WINDOW / ROOT
         self.root = Tk()
         self.root.geometry("1200x600")
         self.root.resizable(0, 0)
@@ -27,6 +27,8 @@ class gui:
         self.root.wm_iconphoto(False, photo) 
 
 #------------------------------------------------------------------------------------------------------------------------
+# DONE BY:
+#IRFAN QAYYIM BIN ABDUL MOHAIMIN (2116843)
         #START FRAME
         self.startframe = Frame(self.root)
         self.startframe.pack(pady=50)
@@ -53,6 +55,8 @@ class gui:
         self.startbutton = Button(self.startframe, text="GET STARTED", width=50, height=3, bg="#5ACC05", fg="#fff", font=("Helvetica", 15), command=start).pack()
 
 #--------------------------------------------------------------------------------------------------------------------------
+# DONE BY:
+#MUHAMMAD HAKIM BIN MD NAZRI (2110457)
         # END FRAME
         self.endframe = Frame(self.root)
 
@@ -75,8 +79,11 @@ class gui:
         self.hadithmeaning = Label(self.endframe, text="(Learn the Arabic language as it is part of your Din)." , font=("Helvetica", 24, "bold")).pack()
         self.hadithsource = Label(self.endframe, text="Al-Bayhaqi: Shu‘ub al-Iman, Vol. 2, p. 257.", font=("Helvetica", 24)).pack(pady=40)
 
-# -----------------------------------------------------------------------------------------------------
+# ----------------------------------------------------------------------------------------------------------------------------------------------
     # QUESTION FRAME
+    # DONE BY:
+    #TANJIM MOBASSHIRA SADIA (1824612)
+    #IMRAN HAZIM BIN ABDULLAH SALIM (2116445)
         self.qframe = Frame(self.root)
 
         # current question (1)
@@ -94,7 +101,7 @@ class gui:
         #spacer
         self.spacer = Label(self.qframe,text="                                             ").grid(row=0, column=1)
         
-        #logo
+        #logo and title
         self.endlogo = ImageTk.PhotoImage(Image.open("image/mosque.png").resize((89, 87)))
         self.endtitle = ImageTk.PhotoImage(Image.open("image/islamiclingo.png").resize((233, 43)))
 
@@ -176,7 +183,7 @@ class gui:
         #submit button logic
         def submitq(currentq):
             if currentq == 1:
-                if self.q1choicearr == [1, 4, 6]:
+                if self.q1choicearr == [1, 4, 6]: #  correct answer
                     self.correctlabel = Label(self.middleq1frame, text="YOU ARE CORRECT!!!", font=("Arial", 20, "bold")).pack()
                     print(True)
                 else:
